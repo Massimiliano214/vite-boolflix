@@ -6,7 +6,7 @@
             originalTitle: String,
             language: String,
             score: Number,
-            image: Image
+            image: String
         }
     }
 </script>
@@ -22,7 +22,7 @@
         <h3 v-else-if="language == 'pt'"> <img src="/download_porto.png" alt="bandiera portoghese"></h3>
         <h3 v-else> {{ language }}</h3>
         <h3> {{ score }}</h3>
-        <img src= "https://image.tmdb.org/t/p/w500/${image}" alt="foto serie Tv">
+        <img :src="image" alt="foto Serie Tv">
     </div>
 
 </template>

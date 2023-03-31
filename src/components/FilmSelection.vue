@@ -25,7 +25,7 @@
             :originalTitle="film.original_title"
             :language="film.original_language"
             :score="film.vote_average"
-            :image="film.poster_path"
+            :image="'https://image.tmdb.org/t/p/w500/' + film.poster_path"
         ></FilmCard>
     </div>
 
@@ -36,7 +36,7 @@
             :originalTitle="series.original_name"
             :language="series.original_language"
             :score="series.vote_average"
-            :image="series.poster_path"
+            :image ="'https://image.tmdb.org/t/p/w500/' + series.poster_path"
         ></TvSeriesCard>
         
     </div>
