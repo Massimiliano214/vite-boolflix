@@ -4,6 +4,6 @@ export const store = reactive(
     {
         search: "",
         filmList: [],
-        emits: ["updatedcount"],
+        
     }
 );

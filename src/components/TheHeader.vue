@@ -3,9 +3,10 @@
 
     export default {
         name: "TheHeader",
+        emits: ["activateResearch"],
         data() {
             return {
-               store 
+               store,
             }
         },
         methods: {

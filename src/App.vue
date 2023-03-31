@@ -2,10 +2,12 @@
   import axios from "axios";
   import { store } from "./store.js";
   import TheHeader from "./components/TheHeader.vue";
+  import FilmSelection from "./components/FilmSelection.vue";
 
   export default {
     components: {
       TheHeader,
+      FilmSelection,
     },
     data() {
       return {
@@ -33,6 +35,8 @@
 
 <template>
   <TheHeader @activateResearch="getFilms"></TheHeader>
+
+  <FilmSelection></FilmSelection>
 </template>
 
 <style lang="scss">
