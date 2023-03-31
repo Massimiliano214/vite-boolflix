@@ -1,7 +1,7 @@
 <script>
     export default {
-        name: "FilmCard",
-        props: {
+        name: "TvSeriesCard",
+        porps: {
             title: String,
             originalTitle: String,
             language: String,
@@ -10,8 +10,10 @@
     }
 </script>
 
+
 <template>
-    <div class="filmCard">
+    
+    <div class="tvSeriesCard">
         <h3> {{ title }}</h3>
         <h3> {{ originalTitle }}</h3>
         <h3 v-if="language == 'it'"> <img src="/download_itas.png" alt="bandiera italiana"></h3>

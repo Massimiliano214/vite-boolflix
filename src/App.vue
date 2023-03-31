@@ -15,16 +15,24 @@
       }
     },
     methods: {
-      getFilms() {
+      getLists() {
 
-        let urlApi = `https://api.themoviedb.org/3/search/movie?api_key=4a8514f5e3a15bb52954d6f04549524a&query=${store.search.replace(" ","+")}&language=it-IT`;
+        let urlApiFilm = `https://api.themoviedb.org/3/search/movie?api_key=4a8514f5e3a15bb52954d6f04549524a&query=${store.search.replace(" ","+")}&language=it-IT`;
+        let urlApiTv = `https://api.themoviedb.org/3/search/tv?api_key=4a8514f5e3a15bb52954d6f04549524a&query=${store.search.replace(" ","+")}&language=it-IT`;
+        
+        console.log(urlApiFilm);
+        console.log(urlApiTv);
 
-        console.log(urlApi);
-
-        axios.get(urlApi)
+        axios.get(urlApiFilm)
         .then(response => {
           this.store.filmList = response.data.results;
           console.log(this.store.filmList);
+        })
+
+        axios.get(urlApiTv)
+        .then(response => {
+          this.store.tvShowList = response.data.results;
+          console.log(this.store.tvShowList);
         })
         
         
@@ -34,7 +42,7 @@
 </script>
 
 <template>
-  <TheHeader @activateResearch="getFilms"></TheHeader>
+  <TheHeader @activateResearch="getLists"></TheHeader>
 
   <FilmSelection></FilmSelection>
 </template>
