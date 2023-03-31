@@ -24,7 +24,8 @@
             :title="film.title"
             :originalTitle="film.original_title"
             :language="film.original_language"
-            :score="film.vote_average"  
+            :score="film.vote_average"
+            :image="film.poster_path"
         ></FilmCard>
     </div>
 
@@ -35,6 +36,7 @@
             :originalTitle="series.original_name"
             :language="series.original_language"
             :score="series.vote_average"
+            :image="series.poster_path"
         ></TvSeriesCard>
         
     </div>
