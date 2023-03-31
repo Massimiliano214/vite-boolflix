@@ -1,7 +1,7 @@
 <script>
     export default {
         name: "TvSeriesCard",
-        porps: {
+        props: {
             title: String,
             originalTitle: String,
             language: String,
