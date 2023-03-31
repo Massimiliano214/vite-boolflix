@@ -1,30 +1,31 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+  import axios from "axios";
+  import { store } from "./store.js";
+  import TheHeader from "./components/TheHeader.vue";
+
+  export default {
+    components: {
+      TheHeader,
+    },
+    data() {
+      return {
+        store
+      }
+    },
+    methods: {
+      getFilms() {
+        let urlApi = "`https://api.themoviedb.org/3/search/movie?api_key=4a8514f5e3a15bb52954d6f04549524a&query=ritorno+al+futuro&language=it-IT`";
+
+        console.log(urlApi);
+      }
+    }
+  }
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <TheHeader @activateResearch="getFilms"></TheHeader>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style lang="scss">
+
 </style>
