@@ -29,7 +29,8 @@
         <h3 v-else-if="language == 'en'"> <img src="/download.png" alt="bandiera inglese"></h3>
         <h3 v-else-if="language == 'pt'"> <img src="/download_porto.png" alt="bandiera portoghese"></h3>
         <h3 v-else> {{ language }}</h3>
-        <h3>{{ scoreCoverter() }}</h3>
+        <h3 v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></h3>
+        <h3 v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></h3>
         <img :src="image" alt="foto Film">
     </li>
 
