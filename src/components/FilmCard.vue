@@ -37,5 +37,7 @@
 </template>
 
 <style scoped lang="scss">
-
+    li {
+        background-image: url(image);
+    }
 </style>

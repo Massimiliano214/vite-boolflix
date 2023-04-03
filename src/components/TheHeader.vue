@@ -35,13 +35,6 @@
         height: 80px;
 
         .container {
-            height: 100%;
-            display: flex;
-            width: 1170px;
-            justify-content: space-between;
-            margin: auto;
-            align-items: center;
-
             h1 {
                 color: red;
             }

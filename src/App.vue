@@ -48,5 +48,14 @@
 </template>
 
 <style lang="scss">
-  @use "./styles/general.scss"
+  @use "./styles/general.scss";
+
+  .container {
+    height: 100%;
+    display: flex;
+    width: 1170px;
+    justify-content: space-between;
+    margin: auto;
+    align-items: center;
+  }
 </style>
