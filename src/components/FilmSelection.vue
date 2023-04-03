@@ -14,12 +14,13 @@
             FilmCard,
             TvSeriesCard
         },
+        
     }
 </script>
 
 <template>
     <h2>FILMS</h2>
-    <div v-for="(film, index) in store.filmList" :key="index">
+    <ul v-for="(film, index) in store.filmList" :key="index">
         <FilmCard 
             :title="film.title"
             :originalTitle="film.original_title"
@@ -27,10 +28,10 @@
             :score="film.vote_average"
             :image="'https://image.tmdb.org/t/p/w500/' + film.poster_path"
         ></FilmCard>
-    </div>
+    </ul>
 
     <h2>TV SERIES</h2>
-    <div v-for="(series, index) in store.tvShowList" :key="index">
+    <ul v-for="(series, index) in store.tvShowList" :key="index">
         <TvSeriesCard
             :title="series.name"
             :originalTitle="series.original_name"
@@ -39,7 +40,7 @@
             :image ="'https://image.tmdb.org/t/p/w500/' + series.poster_path"
         ></TvSeriesCard>
         
-    </div>
+    </ul>
     
 
 </template>

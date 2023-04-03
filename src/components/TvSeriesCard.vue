@@ -7,6 +7,16 @@
             language: String,
             score: Number,
             image: String
+        },
+        methods: {
+            scoreCoverter() {
+                this.Score = Math.ceil(this.score / 2);
+                console.log("NUMERO SCORE " + this.Score);
+                return this.Score;
+            }
+        },mounted() {
+            this.scoreCoverter()
+            
         }
     }
 </script>
@@ -14,7 +24,7 @@
 
 <template>
     
-    <div class="tvSeriesCard">
+    <li class="tvSeriesCard">
         <h3> {{ title }}</h3>
         <h3> {{ originalTitle }}</h3>
         <h3 v-if="language == 'it'"> <img src="/download_itas.png" alt="bandiera italiana"></h3>
@@ -23,7 +33,7 @@
         <h3 v-else> {{ language }}</h3>
         <h3> {{ score }}</h3>
         <img :src="image" alt="foto Serie Tv">
-    </div>
+    </li>
 
 </template>
 
