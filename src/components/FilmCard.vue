@@ -22,26 +22,35 @@
 </script>
 
 <template>
-    <li class="filmCard">
-        <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
-        <h3> {{ originalTitle }}</h3>
-        <h3 v-if="language == 'it'"> <img src="/download_itas.png" alt="bandiera italiana"></h3>
-        <h3 v-else-if="language == 'en'"> <img src="/download.png" alt="bandiera inglese"></h3>
-        <h3 v-else-if="language == 'pt'"> <img src="/download_porto.png" alt="bandiera portoghese"></h3>
-        <h3 v-else> {{ language }}</h3>
-        <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
-        <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
-        <img :src="image" alt="foto Film">
+    <li class="filmCard" :style = "`background-image: url(${image})`">
+        <div class="liContainer">
+            <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
+            <h3> {{ originalTitle }}</h3>
+            <h3 v-if="language == 'it'"> <span class="fi fi-it"></span> <span class="fi fi-it fis"></span></h3>
+            <h3 v-else-if="language == 'en'"> <span class="fi fi-eg"></span> <span class="fi fi-eg fis"></span></h3>
+            <h3 v-else-if="language == 'pt'"> <span class="fi fi-es"></span> <span class="fi fi-es fis"></span></h3>
+            <h3 v-else> {{ language }}</h3>
+            <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
+            <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
+        </div>
+        
     </li>
 
 </template>
 
 <style scoped lang="scss">
     li {
-        
-        background-image: url(image);
-        
+        background-size: cover;
+        width: 100%;
+        height: 420px;
+        margin-bottom: 20px;
+        color: white;
+    
         list-style-type: none;
+
+        .liContainer {
+            display: none;
+        }
 
         img {
             width: 100%;
@@ -49,5 +58,12 @@
         * {
             padding: 5px;
         }
+    }
+
+    ul li:hover {
+        background-color: rgba($color: #000000, $alpha: 0.7);
+       .liContainer {
+        display: block;
+       } 
     }
 </style>
