@@ -60,10 +60,13 @@
         }
     }
 
-    ul li:hover {
-        background-color: rgba($color: #000000, $alpha: 0.7);
+    li:hover {
+        filter: opacity(10%);
+       background-color: black;
        .liContainer {
         display: block;
+        opacity: 1;
+        filter: opacity(100%);
        } 
     }
 </style>
