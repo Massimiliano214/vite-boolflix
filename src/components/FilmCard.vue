@@ -26,10 +26,10 @@
         <div class="liContainer">
             <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
             <h3> {{ originalTitle }}</h3>
-            <h3 v-if="language == 'it'"> <span class="fi fi-it"></span> <span class="fi fi-it fis"></span></h3>
-            <h3 v-else-if="language == 'en'"> <span class="fi fi-eg"></span> <span class="fi fi-eg fis"></span></h3>
-            <h3 v-else-if="language == 'pt'"> <span class="fi fi-es"></span> <span class="fi fi-es fis"></span></h3>
-            <h3 v-else> {{ language }}</h3>
+            <span class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></span>
+            <span class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></span>
+            <span class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></span>
+            <span v-else> {{ language }}</span> <br>
             <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
             <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
         </div>
@@ -39,7 +39,14 @@
 </template>
 
 <style scoped lang="scss">
-    li {
+    @use "/node_modules/flag-icons/css/flag-icons.min.css";
+
+    .flag {
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+    .filmCard {
+        
         background-size: cover;
         width: 100%;
         height: 420px;
@@ -60,13 +67,13 @@
         }
     }
 
-    li:hover {
-        filter: opacity(10%);
-       background-color: black;
+    .filmCard:hover {
+        background-image: none;
+        background-color: black;
        .liContainer {
         display: block;
-        opacity: 1;
-        filter: opacity(100%);
        } 
     }
 </style>
+
+
