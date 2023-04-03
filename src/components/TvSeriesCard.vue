@@ -19,18 +19,22 @@
                 console.log("NUMERO SCORE " + this.newScore);
                 return this.newScore;
             }
-        },mounted() {
+        },
+        created() {
             this.scoreCoverter()
-            
+        },
+        updated() {
+            this.scoreCoverter()
         }
     }
+    
 </script>
 
 
 <template>
     
     <li class="tvSeriesCard">
-        <h3> {{ title }}</h3>
+        <h3 v-if="title != originalTitle"> {{ title }}</h3>
         <h3> {{ originalTitle }}</h3>
         <h3 v-if="language == 'it'"> <img src="/download_itas.png" alt="bandiera italiana"></h3>
         <h3 v-else-if="language == 'en'"> <img src="/download.png" alt="bandiera inglese"></h3>
