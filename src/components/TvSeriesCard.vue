@@ -25,8 +25,8 @@
 
 
 <template>
-    <div class="filmCard" :style = "`background-image: url(${image})`">
-        <li class="tvSeriesCard">
+    <div class="filmCard" :style ="`background-image: url(${image})`">
+        <li class="liContainer">
             <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
             <h3> {{ originalTitle }}</h3>
             <span class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></span>
