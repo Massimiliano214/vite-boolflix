@@ -8,11 +8,16 @@
             score: Number,
             image: String
         },
+        data() {
+            return {
+                newScore: null,
+            }
+        },
         methods: {
             scoreCoverter() {
-                this.Score = Math.ceil(this.score / 2);
-                console.log("NUMERO SCORE " + this.Score);
-                return this.Score;
+                this.newScore = Math.ceil(this.score / 2);
+                console.log("NUMERO SCORE " + this.newScore);
+                return this.newScore;
             }
         },mounted() {
             this.scoreCoverter()
@@ -29,7 +34,7 @@
         <h3 v-else-if="language == 'en'"> <img src="/download.png" alt="bandiera inglese"></h3>
         <h3 v-else-if="language == 'pt'"> <img src="/download_porto.png" alt="bandiera portoghese"></h3>
         <h3 v-else> {{ language }}</h3>
-        <h3> aia {{ score }}</h3>
+        <h3> aia {{ newScore }}</h3>
         <img :src="image" alt="foto Film">
     </li>
 
