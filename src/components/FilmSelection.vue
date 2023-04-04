@@ -1,4 +1,5 @@
 <script>
+    
     import { store } from "../store.js";
     import FilmCard from "./FilmCard.vue";
     import TvSeriesCard from "./TvSeriesCard.vue";
@@ -13,9 +14,21 @@
         components: {
             FilmCard,
             TvSeriesCard
+        },
+        methods: {
+
+
+            getActorsTv() {
+                let urlApiActorsTv = `https://api.themoviedb.org/3/tv/${this.id}/credits?api_key=4a8514f5e3a15bb52954d6f04549524a`;
+
+                axios.get(urlApiActorsTv)
+                .then(response => {
+                this.store.castListTv = response.data.cast;
+                console.log(this.store.castListTv);
+                })
+                this.getActorsTv();
+            },
         }
-        
-        
     }
 </script>
 
@@ -24,12 +37,13 @@
         <h2>FILMS</h2>
         <div class="container">
             
-            <ul v-for="(film, index) in store.filmList" :key="index">
+            <ul v-for="(film, index) in store.filmList" :key="film.id">
                 <FilmCard 
                     :title="film.title"
                     :originalTitle="film.original_title"
                     :language="film.original_language"
                     :score="film.vote_average"
+                    :id="film.id"
                     :image="'https://image.tmdb.org/t/p/w342' + film.poster_path"
                 ></FilmCard>
             </ul>
@@ -41,12 +55,13 @@
         <h2>TV SERIES</h2>
 
         <div class="container">
-            <ul v-for="(series, index) in store.tvShowList" :key="index">
+            <ul @mouseover="createList()" v-for="(series, index) in store.tvShowList" :key="series.id">
                 <TvSeriesCard
                     :title="series.name"
                     :originalTitle="series.original_name"
                     :language="series.original_language"
                     :score="series.vote_average"
+                    :id="series.id"
                     :image ="'https://image.tmdb.org/t/p/w342' + series.poster_path"
                 ></TvSeriesCard>
                 

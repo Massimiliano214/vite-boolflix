@@ -16,28 +16,26 @@
     },
     methods: {
       getLists() {
-
+        this.getFilmsList();
+        this.getTvSeriesList();
+      },
+      getFilmsList() {
         let urlApiFilm = `https://api.themoviedb.org/3/search/movie?api_key=4a8514f5e3a15bb52954d6f04549524a&query=${store.search.replace(" ","+")}&language=it-IT`;
-        let urlApiTv = `https://api.themoviedb.org/3/search/tv?api_key=4a8514f5e3a15bb52954d6f04549524a&query=${store.search.replace(" ","+")}&language=it-IT`;
-        
-        console.log(urlApiFilm);
-        console.log(urlApiTv);
-
+  
         axios.get(urlApiFilm)
         .then(response => {
           this.store.filmList = response.data.results;
-          console.log(this.store.filmList);
         });
+      },
+      getTvSeriesList() {
+        let urlApiTv = `https://api.themoviedb.org/3/search/tv?api_key=4a8514f5e3a15bb52954d6f04549524a&query=${store.search.replace(" ","+")}&language=it-IT`;
 
         axios.get(urlApiTv)
         .then(response => {
           this.store.tvShowList = response.data.results;
-          console.log(this.store.tvShowList);
         });
-        
-        
       }
-    }
+    } 
   }
 </script>
 
