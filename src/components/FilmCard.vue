@@ -1,7 +1,4 @@
 <script>
-    import axios from "axios";
-    import { store } from "../store.js";
-
     export default {
         name: "FilmCard",
         props: {
@@ -14,7 +11,6 @@
         },
         data() {
             return {
-                store,
                 newImage: "../../public/film.jpeg"
             }
         },
@@ -29,27 +25,13 @@
                     return this.image;
                 }
             },
-            getActorsFilms() {
-                let urlApiActorsFilms = `https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=4a8514f5e3a15bb52954d6f04549524a`;
-
-                axios.get(urlApiActorsFilms)
-                .then(response => {
-                this.store.castListFilm = response.data.cast;
-                console.log(this.store.castListFilm);
-                })
-            },
-            
-            createList() {
-                this.getActorsFilms();
-                
-            }
 
         }
     }
 </script>
 
 <template>
-    <div class="sectionNoFlip" @mouseover="createList()">
+    <div class="sectionNoFlip">
         <div class="filmCard" :style ="`background-image: url(${imageChange()})`">
             <li class="liContainer">
                 <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
