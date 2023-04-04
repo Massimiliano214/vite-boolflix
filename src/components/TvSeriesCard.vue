@@ -29,10 +29,10 @@
         <li class="liContainer">
             <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
             <h3> {{ originalTitle }}</h3>
-            <span class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></span>
-            <span class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></span>
-            <span class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></span>
-            <span v-else> {{ language }}</span> <br>
+            <div class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></div>
+            <div class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></div>
+            <div class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></div>
+            <div v-else> {{ language }}</div> <br>
             <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
             <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
         </li>
@@ -62,6 +62,8 @@
             display: none;
             background-color: black;
             height: 100%;
+            padding: 20px;
+            
         }
 
         img {

@@ -13,7 +13,7 @@
         components: {
             FilmCard,
             TvSeriesCard
-        },
+        }
         
     }
 </script>

@@ -27,13 +27,19 @@
         .then(response => {
           this.store.filmList = response.data.results;
           console.log(this.store.filmList);
-        })
+        }).catch(err => {
+          response.data.results.push({poster_path:"/qktgDSamaIp8924F2suWcabzNkY.jpg"});
+          console.log("risposta" + response.data.results);
+        });
 
         axios.get(urlApiTv)
         .then(response => {
           this.store.tvShowList = response.data.results;
           console.log(this.store.tvShowList);
-        })
+        }).catch(err => {
+          response.data.results.push({poster_path:"/qktgDSamaIp8924F2suWcabzNkY.jpg"});
+          console.log("risposta" + response.data.results);
+        });
         
         
       }

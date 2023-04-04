@@ -22,14 +22,14 @@
 </script>
 
 <template>
-    <li class="filmCard" :style = "`background-image: url(${image})`">
+    <li class="filmCard" :style= "`background-image: url(${image})`">
         <div class="liContainer">
             <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
             <h3> {{ originalTitle }}</h3>
-            <span class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></span>
-            <span class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></span>
-            <span class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></span>
-            <span v-else> {{ language }}</span> <br>
+            <div class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></div>
+            <div class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></div>
+            <div class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></div>
+            <div v-else> {{ language }}</div> <br>
             <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
             <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
         </div>
@@ -50,6 +50,9 @@
         background-size: cover;
         width: 100%;
         height: 408px;
+        background-color: black;
+        border: 1px solid white;
+        background-position: center;
         margin-bottom: 20px;
         color: white;
     
@@ -59,6 +62,7 @@
             display: none;
             background-color: rgba($color: #000000, $alpha: 0.9);
             height: 100%;
+            padding: 20px;
         }
 
         img {
