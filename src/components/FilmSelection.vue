@@ -19,7 +19,7 @@
 </script>
 
 <template>
-    <div class="section">
+    <div class="section" v-if="store.filmList.length > 0 && store.tvShowList.length > 0">
         <h2>FILMS</h2>
         <div class="container">
             
@@ -29,7 +29,7 @@
                     :originalTitle="film.original_title"
                     :language="film.original_language"
                     :score="film.vote_average"
-                    :image="'https://image.tmdb.org/t/p/w500/' + film.poster_path"
+                    :image="'https://image.tmdb.org/t/p/w342' + film.poster_path"
                 ></FilmCard>
             </ul>
 
@@ -46,13 +46,15 @@
                     :originalTitle="series.original_name"
                     :language="series.original_language"
                     :score="series.vote_average"
-                    :image ="'https://image.tmdb.org/t/p/w500/' + series.poster_path"
+                    :image ="'https://image.tmdb.org/t/p/w342' + series.poster_path"
                 ></TvSeriesCard>
                 
             </ul>
         </div>
     </div>
-    
+    <div class="section" v-else>
+        <h2>Nessun Risultato</h2>
+    </div>
     
 
 </template>

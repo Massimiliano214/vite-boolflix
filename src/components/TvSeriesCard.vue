@@ -52,7 +52,7 @@
         
         background-size: cover;
         width: 100%;
-        height: 420px;
+        height: 408px;
         margin-bottom: 20px;
         color: white;
     
@@ -60,6 +60,8 @@
 
         .liContainer {
             display: none;
+            background-color: black;
+            height: 100%;
         }
 
         img {
@@ -71,10 +73,10 @@
     }
 
     .filmCard:hover {
-        background-image: none;
-        background-color: black;
+        
        .liContainer {
         display: block;
+        
        } 
     }
 </style>

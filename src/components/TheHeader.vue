@@ -8,9 +8,6 @@
             return {
                store,
             }
-        },
-        methods: {
-            
         }
     }
 </script>
@@ -20,7 +17,7 @@
         <div class="container">
             <h1>BOOLFLIX</h1>
             <div class="searchSector">
-                <input v-model="store.search" type="text" placeholder="Inserisci Titolo...">
+                <input v-model="store.search" type="text" placeholder="Inserisci Titolo..." @keyup.enter="$emit('activateResearch')">
                 <button @click="$emit('activateResearch')">Cerca</button>
             </div>
             
