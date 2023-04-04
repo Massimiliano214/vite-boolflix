@@ -30,18 +30,21 @@
 </script>
 
 <template>
-    <div class="filmCard" :style ="`background-image: url(${imageChange()})`">
-        <li class="liContainer">
-            <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
-            <h3> {{ originalTitle }}</h3>
-            <div class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></div>
-            <div class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></div>
-            <div class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></div>
-            <div v-else> {{ language }}</div> <br>
-            <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
-            <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
-        </li>
-        
+    <div class="sectionNoFlip">
+        <div class="filmCard" :style ="`background-image: url(${imageChange()})`">
+            <li class="liContainer">
+                <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
+                <h3> {{ originalTitle }}</h3>
+                <div class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></div>
+                <div class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></div>
+                <div class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></div>
+                <div v-else> {{ language }}</div> <br>
+                <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
+                <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
+            </li>
+            
+        </div>
+
     </div>
 
 </template>
@@ -54,7 +57,7 @@
         padding: 1.5rem;
     }
     .filmCard {
-        
+        position: relative;
         background-size: cover;
         width: 100%;
         height: 408px;
@@ -63,8 +66,9 @@
         background-position: center;
         margin-bottom: 20px;
         color: white;
-    
         list-style-type: none;
+        
+        
 
         .liContainer {
             display: none;
@@ -80,11 +84,27 @@
             padding: 5px;
         }
     }
+    .sectionNoFlip {
+        width: 100%;
+    }
 
-    .filmCard:hover {
-       .liContainer {
-        display: block;
-       } 
+    .sectionNoFlip:hover {
+        .filmCard {
+            animation: ruota 1s;
+        }
+
+        .liContainer {
+            display: block;
+        } 
+    }
+    
+    @keyframes ruota {
+        50% {
+            transform: rotateY(180deg);
+        }
+        100% {
+            transform: rotateY(0);
+        }
     }
 </style>
 

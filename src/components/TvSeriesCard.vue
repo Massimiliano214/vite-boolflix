@@ -33,18 +33,19 @@
 
 
 <template>
-    
-    <div class="filmCard" :style ="`background-image: url(${imageChange()})`">
-        <li class="liContainer">
-            <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
-            <h3> {{ originalTitle }}</h3>
-            <div class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></div>
-            <div class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></div>
-            <div class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></div>
-            <div v-else> {{ language }}</div> <br>
-            <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
-            <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
-        </li>
+    <div class="sectionNoFlip">
+        <div class="filmCard" :style ="`background-image: url(${imageChange()})`">
+            <li class="liContainer">
+                <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
+                <h3> {{ originalTitle }}</h3>
+                <div class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></div>
+                <div class="flag" v-else-if="language == 'en'"><span class="fi fi-gb"></span></div>
+                <div class="flag" v-else-if="language == 'pt'"><span class="fi fi-pt"></span></div>
+                <div v-else> {{ language }}</div> <br>
+                <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
+                <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
+            </li>
+        </div>
     </div>
     
 
@@ -84,11 +85,26 @@
         }
     }
 
-    .filmCard:hover {
-        
-       .liContainer {
-        display: block;
-        
-       } 
+    .sectionNoFlip {
+        width: 100%;
+    }
+
+    .sectionNoFlip:hover {
+        .filmCard {
+            animation: ruota 1s;
+        }
+
+        .liContainer {
+            display: block;
+        } 
+    }
+
+    @keyframes ruota {
+        50% {
+            transform: rotateY(180deg);
+        }
+        100% {
+            transform: rotateY(0);
+        }
     }
 </style>
