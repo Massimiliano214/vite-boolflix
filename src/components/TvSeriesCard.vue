@@ -10,13 +10,21 @@
         },
         data() {
             return {
-                newScore: null,
+                newImage: "../../public/film.jpeg"
             }
         },
         methods: {
             scoreCoverter() {
                 return Math.ceil(this.score / 2);
+            },
+            imageChange() {
+                if (this.image == 'https://image.tmdb.org/t/p/w342null') {
+                    return this.newImage;
+                } else {
+                    return this.image;
+                }
             }
+
         }
     }
 
@@ -25,7 +33,8 @@
 
 
 <template>
-    <div class="filmCard" :style ="`background-image: url(${image})`">
+    
+    <div class="filmCard" :style ="`background-image: url(${imageChange()})`">
         <li class="liContainer">
             <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
             <h3> {{ originalTitle }}</h3>
@@ -49,18 +58,19 @@
         padding: 1.5rem;
     }
     .filmCard {
-        
         background-size: cover;
         width: 100%;
         height: 408px;
+        background-color: black;
+        border: 1px solid white;
+        background-position: center;
         margin-bottom: 20px;
         color: white;
-    
         list-style-type: none;
 
         .liContainer {
             display: none;
-            background-color: black;
+            background-color: rgba($color: #000000, $alpha: 0.9);
             height: 100%;
             padding: 20px;
             

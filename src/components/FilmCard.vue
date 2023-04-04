@@ -10,20 +10,28 @@
         },
         data() {
             return {
-                newScore: null,
+                newImage: "../../public/film.jpeg"
             }
         },
         methods: {
             scoreCoverter() {
                 return Math.ceil(this.score / 2);
+            },
+            imageChange() {
+                if (this.image == 'https://image.tmdb.org/t/p/w342null') {
+                    return this.newImage;
+                } else {
+                    return this.image;
+                }
             }
+
         }
     }
 </script>
 
 <template>
-    <li class="filmCard" :style= "`background-image: url(${image})`">
-        <div class="liContainer">
+    <div class="filmCard" :style ="`background-image: url(${imageChange()})`">
+        <li class="liContainer">
             <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
             <h3> {{ originalTitle }}</h3>
             <div class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></div>
@@ -32,9 +40,9 @@
             <div v-else> {{ language }}</div> <br>
             <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
             <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
-        </div>
+        </li>
         
-    </li>
+    </div>
 
 </template>
 
