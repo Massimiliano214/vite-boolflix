@@ -1,4 +1,9 @@
 <script>
+
+    import axios from "axios";
+    import { store } from "../store.js";
+    import CastTv from "./CastTv.vue";
+
     export default {
         name: "TvSeriesCard",
         props: {
@@ -6,10 +11,15 @@
             originalTitle: String,
             language: String,
             score: Number,
-            image: String
+            image: String,
+            id: Number
+        },
+        components: {
+            CastTv
         },
         data() {
             return {
+                store,
                 newImage: "../../public/film.jpeg"
             }
         },
@@ -23,8 +33,20 @@
                 } else {
                     return this.image;
                 }
-            }
+            },
+            getActorsTv() {
+                let urlApiActorsTv = `https://api.themoviedb.org/3/tv/${this.id}/credits?api_key=4a8514f5e3a15bb52954d6f04549524a`;
 
+                axios.get(urlApiActorsTv)
+                .then(response => {
+                this.store.castListTv = response.data.cast;
+                console.log(this.store.castListTv);
+                })
+                
+            },
+            createList() {
+                this.getActorsTv();              
+            }
         }
     }
 
@@ -35,7 +57,7 @@
 <template>
     <div class="sectionNoFlip">
         <div class="filmCard" :style ="`background-image: url(${imageChange()})`">
-            <li class="liContainer">
+            <li class="liContainer" @mouseenter="createList()">
                 <h3 v-if="title.toLowerCase() != originalTitle.toLowerCase()"> {{ title }}</h3>
                 <h3> {{ originalTitle }}</h3>
                 <div class="flag" v-if="language == 'it'"><span class="fi fi-it"></span></div>
@@ -44,6 +66,13 @@
                 <div v-else> {{ language }}</div> <br>
                 <span v-for="(score, index) in scoreCoverter()" :key="index"><i class="fa-solid fa-star"></i></span>
                 <span v-for="(score, index) in 5 - scoreCoverter()" :key="index"><i class="fa-regular fa-star"></i></span>
+                <div v-for="(actor, index) in store.castListTv.slice(0,5)" :key="index">
+                    <CastTv
+                        :name="actor.name"
+                        :character="actor.known_for_department"
+                    ></CastTv>
+                    
+                </div>
             </li>
         </div>
     </div>
@@ -74,6 +103,7 @@
             background-color: rgba($color: #000000, $alpha: 0.9);
             height: 100%;
             padding: 20px;
+            overflow-y: auto;
             
         }
 
