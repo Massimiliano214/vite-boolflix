@@ -19,7 +19,7 @@
         data() {
             return {
                 store,
-                newImage: "../../public/film.jpeg"
+                newImage: "/film.jpeg"
             }
         },
         methods: {
